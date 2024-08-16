@@ -1,7 +1,7 @@
 # Encrypt
 Simple application to encrypt your files
 
-![Captura](https://github.com/user-attachments/assets/d9d0da95-9088-414d-81b0-e1973f9e1d84)
+![Captura](https://github.com/user-attachments/assets/e4a3aff3-bbd0-448d-a56b-28d8a3889e3d)
 
 This app relies on a few libraries to work
 
