@@ -99,7 +99,7 @@ void GUI::loadKernel() {
 
     file.close();
 
-    system("rm file");
+    system("del file");
     //system("cipher /w:.");
 
 }
@@ -123,7 +123,7 @@ void GUI::saveKernel() {
     file.close();
 
     system("gpg --yes --symmetric --cipher-algo AES256 --output kernel file");
-    system("rm file");
+    system("del file");
     //system("cipher /w:.");
 }
 
@@ -231,7 +231,7 @@ void GUI::draw() {
         ImGui::Text("Are you sure that you want to delete this file?");
         if(ImGui::Button("Yes")) {
             std::string command;
-            command = "rm files/" + kernel[targetFile].randomName;
+            command = "del files/" + kernel[targetFile].randomName;
             system(command.c_str());
             kernel.erase(kernel.begin() + targetFile);
             sureToDelete = false;
@@ -249,7 +249,6 @@ void GUI::draw() {
         ImGui::Text("Exit saving changes");
         if(ImGui::Button("Save")) {
             saveKernel();
-            system("cipher /w:.");
             kernelUnsaved = false;
         }
         ImGui::SameLine();
@@ -259,11 +258,6 @@ void GUI::draw() {
         ImGui::End();
     }
     
-    ImGui::Begin("Clean directory");
-    if(ImGui::Button("Clean")) {
-        system("cipher /w:.");
-    }
-    ImGui::End();
 }
 
 void GUI::action() {
@@ -283,7 +277,7 @@ void GUI::action() {
         std::string command;
         command = "gpg --batch --yes --passphrase " + kernel[targetFile].password + " --symmetric --cipher-algo AES256 --output files/" + kernel[targetFile].randomName + " \"" + importFilePath + "\"";
         system(command.c_str());
-        command = "rm \"" + importFilePath + "\"";
+        command = "del \"" + importFilePath + "\"";
         system(command.c_str());
     }
 }
